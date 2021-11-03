@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="archive">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="students">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="student" maxOccurs="unbounded" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:all maxOccurs="1" minOccurs="1">
+                                        <xsd:element type="xsd:date" name="dateOfBirth"/>
+                                        <xsd:element type="xsd:string" name="name"/>
+                                        <xsd:element type="xsd:string" name="address"/>
+                                        <xsd:element type="xsd:float" name="averageGrade"/>
+                                    </xsd:all>
+                                    <xsd:attribute type="xsd:ID" name="id" use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

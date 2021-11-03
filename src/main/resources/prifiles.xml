@@ -1,0 +1,12 @@
+<profiles>
+    <profile>
+        <login>Ofeitus</login>
+        <password>kislorod</password>
+        <rights>admin</rights>
+    </profile>
+    <profile>
+        <login>login</login>
+        <password>password</password>
+        <rights>user</rights>
+    </profile>
+</profiles>

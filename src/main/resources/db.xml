@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="db.xsd">
+    <students>
+        <student id="s0">
+            <dateOfBirth>2001-04-30</dateOfBirth>
+            <name>Tim</name>
+            <address>Лещинского, 7, 180</address>
+            <averageGrade>8.9</averageGrade>
+        </student>
+        <student id="s1">
+            <name>Max</name>
+            <dateOfBirth>2020-04-30</dateOfBirth>
+            <address>Лещинского, 7, 360</address>
+            <averageGrade>1.9</averageGrade>
+        </student>
+    </students>
+</archive>
