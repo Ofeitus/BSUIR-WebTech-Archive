@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public interface StudentParser {
+public interface XmlParser {
     List<Map<String, String>> parse(File dbFile) throws XmlParserException, ParserConfigurationException, SAXException, IOException;
 }

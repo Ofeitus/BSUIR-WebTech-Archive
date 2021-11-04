@@ -6,16 +6,9 @@ import com.bsuir.ofeitus.archive.server.dao.StudentDaoFactory;
 import com.bsuir.ofeitus.archive.server.service.ServerService;
 import com.bsuir.ofeitus.archive.server.service.ServerServiceException;
 
-import java.io.BufferedReader;
-import java.io.PrintStream;
-import java.net.Socket;
 import java.util.List;
 
 public class StudentServerService implements ServerService {
-    private Socket socket;
-    private PrintStream outputStream;
-    private BufferedReader inputStream;
-
     public StudentServerService() {
     }
 

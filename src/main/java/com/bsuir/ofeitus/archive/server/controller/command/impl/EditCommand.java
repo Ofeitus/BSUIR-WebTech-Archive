@@ -1,5 +1,7 @@
 package com.bsuir.ofeitus.archive.server.controller.command.impl;
 
+import com.bsuir.ofeitus.archive.bean.Profile;
+import com.bsuir.ofeitus.archive.bean.Rights;
 import com.bsuir.ofeitus.archive.bean.Student;
 import com.bsuir.ofeitus.archive.server.controller.command.ServerCommand;
 import com.bsuir.ofeitus.archive.server.service.ServerService;
@@ -12,7 +14,13 @@ import java.util.Map;
 
 public class EditCommand implements ServerCommand {
     @Override
-    public String execute(String request) {
+    public String execute(String request, Profile profile) {
+        if (profile.getRights() == Rights.GUEST) {
+            return "Not authorized";
+        } else if (profile.getRights() != Rights.ADMIN) {
+            return "Not enough rights";
+        }
+
         ServerServiceFactory serviceFactory = ServerServiceFactory.getInstance();
         ServerService serverService = serviceFactory.getServerService();
 
@@ -28,7 +36,7 @@ public class EditCommand implements ServerCommand {
 
         try {
             serverService.edit(new Student(params));
-            response.append("Student edited").append("\n");
+            return "Student edited\n";
         } catch (ServerServiceException | ParseException e) {
             response.append(e.getMessage()).append("\n");
         }

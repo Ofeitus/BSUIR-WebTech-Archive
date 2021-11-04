@@ -11,6 +11,10 @@ public class ClientControllerImpl implements ClientController {
         String commandName;
         commandName = request.split("\\s+")[0];
         ClientCommand command = ClientCommandProvider.getCommand(commandName);
-        return command.execute(request);
+        if (command == null) {
+            return "Invalid command\n";
+        } else {
+            return command.execute(request);
+        }
     }
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 public class ClientCommandProvider {
     private static final Map<String, ClientCommand> commands = new HashMap<>() {{
         put("connect", new ConnectCommand());
+        put("login", new LoginCommand());
         put("getAll", new GetAllCommand());
         put("get", new GetByIdCommand());
         put("add", new AddCommand());

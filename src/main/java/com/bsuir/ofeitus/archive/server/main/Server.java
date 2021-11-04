@@ -1,5 +1,6 @@
 package com.bsuir.ofeitus.archive.server.main;
 
+import com.bsuir.ofeitus.archive.bean.Profile;
 import com.bsuir.ofeitus.archive.server.controller.ServerController;
 import com.bsuir.ofeitus.archive.server.controller.ServerControllerFactory;
 
@@ -29,6 +30,7 @@ public class Server extends Thread{
 class ServerThread extends Thread{
     private final DataOutputStream outputStream;
     private final DataInputStream inputStream;
+    private final Profile profile = new Profile();
 
     public ServerThread(Socket socket) throws IOException {
         outputStream = new DataOutputStream(socket.getOutputStream());
@@ -41,9 +43,8 @@ class ServerThread extends Thread{
 
         while (true) {
             try {
-                String request;
-                request = inputStream.readUTF();
-                outputStream.writeUTF(serverController.doAction(request));
+                String request = inputStream.readUTF();
+                outputStream.writeUTF(serverController.doAction(request, profile));
             } catch (IOException e) {
                 System.out.println(e.getMessage());
                 break;

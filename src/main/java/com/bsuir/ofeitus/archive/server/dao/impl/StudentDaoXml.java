@@ -3,7 +3,7 @@ package com.bsuir.ofeitus.archive.server.dao.impl;
 import com.bsuir.ofeitus.archive.bean.Student;
 import com.bsuir.ofeitus.archive.server.dao.ServerDaoException;
 import com.bsuir.ofeitus.archive.server.dao.StudentDao;
-import com.bsuir.ofeitus.archive.server.dao.parser.StudentParser;
+import com.bsuir.ofeitus.archive.server.dao.parser.XmlParser;
 import com.bsuir.ofeitus.archive.server.dao.parser.XmlParserException;
 import com.bsuir.ofeitus.archive.server.dao.parser.impl.XmlStudentParser;
 import com.bsuir.ofeitus.archive.server.dao.writer.StudentWriter;
@@ -27,7 +27,7 @@ public class StudentDaoXml implements StudentDao {
     public List<Student> get(String id) throws ServerDaoException {
         List<Student> students = new ArrayList<>();
         try {
-            StudentParser parser = new XmlStudentParser();
+            XmlParser parser = new XmlStudentParser();
             List<Map<String, String>> studentsParams = parser.parse(dbFile);
             for (Map<String, String> params : studentsParams) {
 
@@ -45,7 +45,7 @@ public class StudentDaoXml implements StudentDao {
     public List<Student> getAll() throws ServerDaoException {
         List<Student> students = new ArrayList<>();
         try {
-            StudentParser parser = new XmlStudentParser();
+            XmlParser parser = new XmlStudentParser();
             List<Map<String, String>> studentsParams = parser.parse(dbFile);
             for (Map<String, String> params : studentsParams) {
                 students.add(new Student(params));

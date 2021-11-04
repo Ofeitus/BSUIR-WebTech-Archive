@@ -1,5 +1,7 @@
 package com.bsuir.ofeitus.archive.server.controller.command.impl;
 
+import com.bsuir.ofeitus.archive.bean.Profile;
+import com.bsuir.ofeitus.archive.bean.Rights;
 import com.bsuir.ofeitus.archive.bean.Student;
 import com.bsuir.ofeitus.archive.server.controller.command.ServerCommand;
 import com.bsuir.ofeitus.archive.server.service.ServerService;
@@ -12,7 +14,11 @@ import java.util.Map;
 
 public class GetByIdCommand implements ServerCommand {
     @Override
-    public String execute(String request) {
+    public String execute(String request, Profile profile) {
+        if (profile.getRights() == Rights.GUEST) {
+            return "Not authorized";
+        }
+
         ServerServiceFactory serviceFactory = ServerServiceFactory.getInstance();
         ServerService serverService = serviceFactory.getServerService();
 
